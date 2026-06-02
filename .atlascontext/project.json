@@ -1,0 +1,9 @@
+{
+  "name": "TowerGame",
+  "project_type": "web-game",
+  "aspect": "portrait",
+  "renderer": "canvas-2d",
+  "module_system": "esm",
+  "architecture": "mvc-strict",
+  "notes": "Web app game, portrait aspect. Heavy MVC. Strict modularity. Asset structure must support drop-in replacement. See CLAUDE.md for the binding rules and the mandatory subagent routing table."
+}

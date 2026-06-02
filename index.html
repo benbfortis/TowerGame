@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, viewport-fit=cover">
+  <meta name="theme-color" content="#07090d">
+  <title>TowerGame</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="stage">
+    <canvas id="game" width="540" height="960" aria-label="TowerGame"></canvas>
+    <div id="hud">
+      <div id="hud-top">
+        <span id="hud-faction-counts" aria-label="faction factory counts"></span>
+      </div>
+      <div id="hud-loadout" aria-label="active loadout"></div>
+      <div id="hud-controls">
+        <button id="hud-retry" type="button" aria-label="retry">Retry</button>
+        <button id="hud-exit" type="button" aria-label="exit to menu">Exit</button>
+      </div>
+      <div id="hud-hint">Press a factory you own and drag to a target. Drag again to remove. Drop on self to clear.</div>
+      <div id="hud-over" class="hidden" role="dialog" aria-live="polite">
+        <div id="hud-over-text">You Win</div>
+        <div id="hud-over-buttons">
+          <button id="hud-over-next" type="button">Next random</button>
+          <button id="hud-over-retry" type="button">Retry</button>
+          <button id="hud-over-restart" type="button">Change loadout</button>
+        </div>
+      </div>
+
+      <!-- Loadout selection screen — shown at boot, hidden on Start. -->
+      <div id="loadout-screen" role="dialog" aria-label="select units">
+        <div id="loadout-card">
+          <h1 id="loadout-title">TowerGame</h1>
+          <p id="loadout-sub">Pick a scenario and your unit loadout. Tower rank determines which slot fires when captured.</p>
+
+          <div class="scenario-row">
+            <div class="loadout-rank-label">SCENARIO</div>
+            <button class="scenario-prev" type="button" aria-label="previous scenario">◀</button>
+            <div class="scenario-info">
+              <div class="scenario-name">—</div>
+              <div class="scenario-desc">—</div>
+            </div>
+            <button class="scenario-next" type="button" aria-label="next scenario">▶</button>
+          </div>
+
+          <div class="loadout-row" data-rank="light">
+            <div class="loadout-rank-label">LIGHT<br><span class="loadout-rank-hint">fast spawn</span></div>
+            <button class="loadout-prev" type="button" aria-label="previous">◀</button>
+            <div class="loadout-unit">
+              <div class="loadout-unit-glyph">·</div>
+              <div class="loadout-unit-text">
+                <div class="loadout-unit-name">—</div>
+                <div class="loadout-unit-desc">—</div>
+              </div>
+            </div>
+            <button class="loadout-next" type="button" aria-label="next">▶</button>
+          </div>
+
+          <div class="loadout-row" data-rank="medium">
+            <div class="loadout-rank-label">MEDIUM<br><span class="loadout-rank-hint">mid spawn</span></div>
+            <button class="loadout-prev" type="button" aria-label="previous">◀</button>
+            <div class="loadout-unit">
+              <div class="loadout-unit-glyph">·</div>
+              <div class="loadout-unit-text">
+                <div class="loadout-unit-name">—</div>
+                <div class="loadout-unit-desc">—</div>
+              </div>
+            </div>
+            <button class="loadout-next" type="button" aria-label="next">▶</button>
+          </div>
+
+          <div class="loadout-row" data-rank="heavy">
+            <div class="loadout-rank-label">HEAVY<br><span class="loadout-rank-hint">slow spawn</span></div>
+            <button class="loadout-prev" type="button" aria-label="previous">◀</button>
+            <div class="loadout-unit">
+              <div class="loadout-unit-glyph">·</div>
+              <div class="loadout-unit-text">
+                <div class="loadout-unit-name">—</div>
+                <div class="loadout-unit-desc">—</div>
+              </div>
+            </div>
+            <button class="loadout-next" type="button" aria-label="next">▶</button>
+          </div>
+
+          <div id="loadout-buttons">
+            <button id="loadout-start" type="button">Play Random</button>
+            <button id="loadout-start-selected" type="button">Play Selected</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Version badge (BINDING per CLAUDE.md §0 — bottom-right of every screen) -->
+      <div id="hud-version" aria-label="version">v—</div>
+    </div>
+  </div>
+  <script type="module" src="src/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+# Tower Game .app launcher — starts the local server (or reuses one) and opens
+# the browser. LSUIElement=true keeps it out of the dock; quit via Activity
+# Monitor or `pkill -f "http.server 8766"`.
+PORT=8766
+URL="http://localhost:$PORT/"
+# Project root = .app/../   (the .app lives at the project root)
+PROJ="$(cd "$(dirname "$0")/../../.." && pwd)"
+cd "$PROJ"
+
+# If a server is already on the port, just open the browser
+if lsof -ti :"$PORT" >/dev/null 2>&1; then
+  open "$URL"
+  exit 0
+fi
+
+# Boot the server detached so the .app process can exit cleanly
+nohup python3 -m http.server "$PORT" >/tmp/towergame-server.log 2>&1 &
+disown $!
+# Give it a moment to bind, then open the browser
+sleep 0.7
+open "$URL"

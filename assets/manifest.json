@@ -1,0 +1,13 @@
+{
+  "_doc": "Top-level asset index. See ASSET_GUIDELINES.md. v1 ships with no image assets; rendering is procedural. Per-category arrays list folder ids under assets/<category>/<id>/ once art lands.",
+  "heroes": [],
+  "enemies": [],
+  "bosses": [],
+  "minibosses": [],
+  "abilities": [],
+  "boons": [],
+  "traits": [],
+  "tiles": [],
+  "vfx": [],
+  "ui": []
+}
