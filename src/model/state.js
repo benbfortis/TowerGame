@@ -18,9 +18,7 @@
 //                                     Tier scaling reads this. Drains under multi-arrow load.
 //   timeSinceLevelUp REMOVED        — production tier is pop-based, no time component.
 
-import { FACTORY_TUNING } from '../data/factories.js';
-import { DEFAULT_LOADOUTS } from '../data/loadouts.js';
-import { RANK_COST } from '../data/ranks.js';
+import { FACTORY_TUNING, DEFAULT_LOADOUTS, RANK_COST } from '../data/store.js';
 import { buildPathInfo } from './reachability.js';
 
 export function createState(map, prevLoadouts) {

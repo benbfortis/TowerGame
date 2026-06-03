@@ -1,0 +1,44 @@
+{
+  "_note": "genIntervalSec = base(3/5/9) ÷ GAME_SCALE(5). maxPop = base(10/30/80) × GAME_SCALE(5).",
+  "RANKS": ["light", "medium", "heavy"],
+  "genIntervalSec": {
+    "light":  0.6,
+    "medium": 1.0,
+    "heavy":  1.8
+  },
+  "unitSpeed": {
+    "light":  120,
+    "medium": 85,
+    "heavy":  55
+  },
+  "damage": {
+    "light":  1,
+    "medium": 3,
+    "heavy":  8
+  },
+  "hp": {
+    "light":  1,
+    "medium": 3,
+    "heavy":  8
+  },
+  "visualRadius": {
+    "light":  5,
+    "medium": 7,
+    "heavy":  9
+  },
+  "cost": {
+    "light":  1,
+    "medium": 3,
+    "heavy":  8
+  },
+  "maxPop": {
+    "light":  50,
+    "medium": 150,
+    "heavy":  400
+  },
+  "forwardCooldownSec": {
+    "light":  0.3,
+    "medium": 0.5,
+    "heavy":  1.0
+  }
+}

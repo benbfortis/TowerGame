@@ -10,9 +10,7 @@
 
 import { getFactory } from './state.js';
 import { onCaptured } from './factories.js';
-import { UNIT_TYPES } from '../data/unitTypes.js';
-import { RANK_COST, RANK_MAX_POP } from '../data/ranks.js';
-import { TERRAIN_EFFECTS } from '../data/terrain.js';
+import { UNIT_TYPES, RANK_COST, RANK_MAX_POP, TERRAIN_EFFECTS, VFX } from '../data/store.js';
 
 export function tickUnits(state, dt) {
   const initialLen = state.units.length;
@@ -121,7 +119,7 @@ function tickRangedFire(state, dt) {
     state.shots.push({
       x1: u.x, y1: u.y, x2: bestTarget.x, y2: bestTarget.y,
       owner: u.owner,
-      until: state.elapsed + 0.18,
+      until: state.elapsed + VFX.shotFlashSec,
     });
   }
 }

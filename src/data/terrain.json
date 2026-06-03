@@ -1,0 +1,30 @@
+{
+  "types": ["brick", "mountain", "sea", "sand", "chasm", "swamp", "lava"],
+  "effects": {
+    "brick":    { "light": { "blocked": true }, "medium": { "speedMul": 0.6 },  "heavy": { "speedMul": 1.1 } },
+    "mountain": { "light": { "blocked": true }, "medium": { "speedMul": 0.55 }, "heavy": { "speedMul": 0.7 } },
+    "sea":      { "light": { "blocked": true }, "medium": { "blocked": true },  "heavy": { "blocked": true } },
+    "sand":     { "light": { "speedMul": 0.85 }, "medium": { "speedMul": 0.75 }, "heavy": { "speedMul": 0.55 } },
+    "chasm":    { "light": { "blocked": true }, "medium": { "blocked": true },  "heavy": { "speedMul": 0.5 } },
+    "swamp":    { "light": { "speedMul": 0.6 },  "medium": { "speedMul": 0.55 }, "heavy": { "speedMul": 0.5 } },
+    "lava":     { "light": { "blocked": true }, "medium": { "speedMul": 0.4 },  "heavy": { "speedMul": 0.65 } }
+  },
+  "render": {
+    "brick":    { "fill": "rgba(165,90,55,0.55)",   "stroke": "rgba(120,60,30,0.85)",   "label": "Brick"    },
+    "mountain": { "fill": "rgba(110,108,120,0.55)", "stroke": "rgba(70,68,82,0.85)",    "label": "Mountain" },
+    "sea":      { "fill": "rgba(40,108,180,0.60)",  "stroke": "rgba(20,70,140,0.85)",   "label": "Sea"      },
+    "sand":     { "fill": "rgba(212,178,90,0.55)",  "stroke": "rgba(170,135,60,0.85)",  "label": "Sand"     },
+    "chasm":    { "fill": "rgba(15,18,28,0.85)",    "stroke": "rgba(60,65,80,0.95)",    "label": "Chasm"    },
+    "swamp":    { "fill": "rgba(68,110,72,0.55)",   "stroke": "rgba(40,72,46,0.85)",    "label": "Swamp"    },
+    "lava":     { "fill": "rgba(210,75,40,0.55)",   "stroke": "rgba(160,40,15,0.9)",    "label": "Lava"     }
+  },
+  "losBlocks": {
+    "brick":    true,
+    "mountain": true,
+    "sea":      false,
+    "sand":     false,
+    "chasm":    false,
+    "swamp":    false,
+    "lava":     false
+  }
+}

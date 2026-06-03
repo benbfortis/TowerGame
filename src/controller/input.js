@@ -24,6 +24,7 @@ import { viewportToMap } from '../view/canvas.js';
 import { addInvasion, clearInvasions, cancelInvasionsCrossingSegment } from './actions.js';
 import { pathReachability } from '../model/reachability.js';
 import { getFactory } from '../model/state.js';
+import { VFX } from '../data/store.js';
 
 export function attachInput(canvas, state, viewState, mapWidth, mapHeight) {
   function pickFactory(clientX, clientY, radius) {
@@ -154,7 +155,7 @@ export function attachInput(canvas, state, viewState, mapWidth, mapHeight) {
     // INVADE-mode commit semantics.
     if (snappedId && reach === 'blocked') {
       // audio.play('commit-denied'); haptics.error('strong');
-      state.deniedFlash = { factoryId: snappedId, until: performance.now() + 350 };
+      state.deniedFlash = { factoryId: snappedId, until: performance.now() + VFX.deniedFlashMs };
       return;
     }
     if (snappedId) {

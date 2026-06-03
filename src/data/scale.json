@@ -1,0 +1,4 @@
+{
+  "GAME_SCALE": 5,
+  "_note": "Global tempo multiplier. Baked into factories.json (×5) and ranks.json (÷5 or ×5). Change here AND update those files to match."
+}

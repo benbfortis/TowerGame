@@ -1,0 +1,16 @@
+{
+  "deniedFlashMs": 350,
+  "shotFlashSec": 0.18,
+  "terrainTileSize": 24,
+  "invasionArrowWidth": 3,
+  "shotLineWidth": 2,
+  "shotImpactRadius": 3,
+  "sourceHaloPulseHz": 1.5,
+  "sourceHaloAmplitudePx": 3,
+  "sourceHaloOffsetPx": 8,
+  "snapRingPulseHz": 1.2,
+  "snapRingAmplitudePx": 2,
+  "snapRingOffsetPx": 6,
+  "deniedFlashRingOffsetPx": 10,
+  "deniedFlashLineWidth": 4
+}

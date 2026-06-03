@@ -1,0 +1,7 @@
+{
+  "player": { "light": "worker",       "medium": "bulldozer", "heavy": "demolitionBall" },
+  "ai":     { "light": "scout",        "medium": "sapper",    "heavy": "siegeTank"      },
+  "yellow": { "light": "sharpshooter", "medium": "mortar",    "heavy": "artillery"      },
+  "green":  { "light": "worker",       "medium": "bulldozer", "heavy": "demolitionBall" },
+  "AI_FACTIONS": ["ai", "yellow", "green"]
+}

@@ -8,8 +8,7 @@
 
 import { getFactory, isContested, popTier } from '../model/state.js';
 import { pathReachability, getPathWaypoints } from '../model/reachability.js';
-import { TERRAIN_RENDER } from '../data/terrain.js';
-import { UNITS } from '../data/units.js';
+import { TERRAIN_RENDER, UNITS, VFX } from '../data/store.js';
 
 const COLOR = {
   bg: '#0d1117',
@@ -74,7 +73,7 @@ export function render(ctx, state, viewState) {
         const stroke = ownerInvasionColor(f.owner);
         ctx.fillStyle = stroke;
         ctx.strokeStyle = stroke;
-        ctx.lineWidth = 3;
+        ctx.lineWidth = VFX.invasionArrowWidth;
         const wp = getPathWaypoints(state, f.id, tid, f.rank);
         drawPolylineArrow(ctx, wp, dst, state.config.factoryRadius);
       }
@@ -105,7 +104,7 @@ export function render(ctx, state, viewState) {
     for (const s of state.shots) {
       const remaining = s.until - state.elapsed;
       if (remaining <= 0) continue;
-      const alpha = Math.min(1, remaining / 0.18) * 0.95;
+      const alpha = Math.min(1, remaining / VFX.shotFlashSec) * 0.95;
       const base = ownerBodyColor(s.owner);
       // Convert hex → rgba with current alpha.
       const r = parseInt(base.slice(1,3), 16);
@@ -113,7 +112,7 @@ export function render(ctx, state, viewState) {
       const b = parseInt(base.slice(5,7), 16);
       const color = `rgba(${r},${g},${b},${alpha})`;
       ctx.strokeStyle = color;
-      ctx.lineWidth = 2;
+      ctx.lineWidth = VFX.shotLineWidth;
       ctx.beginPath();
       ctx.moveTo(s.x1, s.y1);
       ctx.lineTo(s.x2, s.y2);
@@ -121,7 +120,7 @@ export function render(ctx, state, viewState) {
       // Impact dot at target.
       ctx.fillStyle = color;
       ctx.beginPath();
-      ctx.arc(s.x2, s.y2, 3, 0, Math.PI * 2);
+      ctx.arc(s.x2, s.y2, VFX.shotImpactRadius, 0, Math.PI * 2);
       ctx.fill();
     }
   }
@@ -139,13 +138,13 @@ export function render(ctx, state, viewState) {
   if (state.deniedFlash) {
     const remaining = state.deniedFlash.until - nowMs;
     if (remaining > 0) {
-      const alpha = Math.min(1, remaining / 350) * 0.9;
+      const alpha = Math.min(1, remaining / VFX.deniedFlashMs) * 0.9;
       const f = getFactory(state, state.deniedFlash.factoryId);
       if (f) {
         ctx.strokeStyle = `rgba(255,91,91,${alpha})`;
-        ctx.lineWidth = 4;
+        ctx.lineWidth = VFX.deniedFlashLineWidth;
         ctx.beginPath();
-        ctx.arc(f.x, f.y, state.config.factoryRadius + 10, 0, Math.PI * 2);
+        ctx.arc(f.x, f.y, state.config.factoryRadius + VFX.deniedFlashRingOffsetPx, 0, Math.PI * 2);
         ctx.stroke();
       }
     }
@@ -159,9 +158,8 @@ export function render(ctx, state, viewState) {
 // inside the polygon is drawn as a filled chunk with a subtle separator.
 // Gives organic shapes a pixel-art / tactical-grid look while keeping
 // the polygon storage format unchanged.
-const TILE_SIZE = 24;
-
 function renderTerrain(ctx, state) {
+  const TILE_SIZE = VFX.terrainTileSize;
   const arr = state.terrainRegions || [];
   for (const r of arr) {
     const palette = TERRAIN_RENDER[r.type];
@@ -222,8 +220,8 @@ function drawFactory(ctx, f, state, drag, nowMs) {
 
   // Source factory: subtle outward pulse during invade drag (skip if reduced-motion).
   if (drag && drag.active && drag.mode === 'invade' && drag.srcId === f.id && !reducedMotion) {
-    const phase = (nowMs / 1000) * 2 * Math.PI * 1.5;
-    const halo = r + 8 + Math.sin(phase) * 3;
+    const phase = (nowMs / 1000) * 2 * Math.PI * VFX.sourceHaloPulseHz;
+    const halo = r + VFX.sourceHaloOffsetPx + Math.sin(phase) * VFX.sourceHaloAmplitudePx;
     ctx.strokeStyle = 'rgba(126,200,255,0.45)';
     ctx.lineWidth = 2;
     ctx.beginPath();
@@ -424,10 +422,10 @@ function drawSnapRing(ctx, state, drag, nowMs) {
   } else {
     color = COLOR.ringBlocked; dash = []; pulse = false;
   }
-  let radius = state.config.factoryRadius + 6;
+  let radius = state.config.factoryRadius + VFX.snapRingOffsetPx;
   if (pulse && !reducedMotion) {
-    const phase = (nowMs / 1000) * 2 * Math.PI * 1.2;
-    radius += Math.sin(phase) * 2;
+    const phase = (nowMs / 1000) * 2 * Math.PI * VFX.snapRingPulseHz;
+    radius += Math.sin(phase) * VFX.snapRingAmplitudePx;
   }
   ctx.strokeStyle = color;
   ctx.lineWidth = 3;

@@ -8,8 +8,7 @@
 //     opts.onScenarioChange(idx): called when player cycles scenario.
 //   returns { show, hide }.
 
-import { listUnitsByRank } from '../data/units.js';
-import { RANKS } from '../data/ranks.js';
+import { listUnitsByRank, RANKS } from '../data/store.js';
 
 export function attachLoadout(state, onStart, opts = {}) {
   const screen = document.getElementById('loadout-screen');

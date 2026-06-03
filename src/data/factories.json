@@ -1,0 +1,20 @@
+{
+  "_note": "Values derived from GAME_SCALE=5 are pre-computed. See scale.json.",
+  "startingBasePopulation": 60,
+  "maxLevel": 99,
+  "popPerTier": 50,
+  "popTierRateBonus": 0.5,
+  "baseGenIntervalSec": 2.0,
+  "unitSpeed": 90,
+  "unitRadius": 6,
+  "factoryRadius": 36,
+  "factoryPickupRadius": 58,
+  "targetSnapRadius": 72,
+  "aiReplanEverySec": 1.5,
+  "aiLevelWeight": 2,
+  "aiBaseBonus": 3,
+  "aiDistDecay": 0.005,
+  "aiPenaltyMul": 1.5,
+  "inflowBoostFactor": 0.5,
+  "inflowDecayTauSec": 4.0
+}

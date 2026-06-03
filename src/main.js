@@ -2,7 +2,7 @@
 // v1.21: Play picks a random scenario; in-game Exit / Retry / Next-random.
 
 import { SCENARIOS } from './data/maps/index.js';
-import { VERSION_LABEL } from './data/version.js';
+import { VERSION_LABEL } from './data/store.js';
 import { createState, resetState } from './model/state.js';
 import { createAi, resetAi } from './model/ai.js';
 import { setupCanvas } from './view/canvas.js';

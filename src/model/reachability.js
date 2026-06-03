@@ -18,9 +18,7 @@
 //   getPathWaypoints(state, srcId, dstId, rank, pathfinds)
 //   segmentSpeedAtT() — legacy stub.
 
-import { RANKS } from '../data/ranks.js';
-import { TERRAIN_EFFECTS } from '../data/terrain.js';
-import { UNITS } from '../data/units.js';
+import { RANKS, TERRAIN_EFFECTS, UNITS } from '../data/store.js';
 
 const CELL = 30;
 const STRAIGHT_SAMPLES = 32;

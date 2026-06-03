@@ -8,7 +8,7 @@
 //     callbacks.nextRandom()         — pick a fresh random scenario and start
 //     callbacks.changeLoadout()      — alias of exit; for the game-over modal
 
-import { UNITS } from '../data/units.js';
+import { UNITS } from '../data/store.js';
 
 const FACTION_COLORS = {
   player: '#3aa6ff',

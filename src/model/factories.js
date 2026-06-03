@@ -14,9 +14,7 @@
 //                             arrival when dst has outgoing arrows.
 
 import { getFactory, popTier } from './state.js';
-import { RANK_GEN_INTERVAL_SEC, RANK_UNIT_SPEED, RANK_DAMAGE, RANK_UNIT_HP, RANK_UNIT_RADIUS, RANK_COST, RANK_FORWARD_COOLDOWN_SEC, RANK_MAX_POP } from '../data/ranks.js';
-import { GAME_SCALE } from '../data/scale.js';
-import { UNITS } from '../data/units.js';
+import { RANK_GEN_INTERVAL_SEC, RANK_UNIT_SPEED, RANK_DAMAGE, RANK_UNIT_HP, RANK_UNIT_RADIUS, RANK_COST, RANK_FORWARD_COOLDOWN_SEC, RANK_MAX_POP, GAME_SCALE, UNITS } from '../data/store.js';
 
 export function tickFactories(state, dt) {
   const tau = state.config.inflowDecayTauSec || 4.0;
